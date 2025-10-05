@@ -1,0 +1,13 @@
+{
+  "name": "sgg",
+  "version": "1.0.0",
+  "description": "A minimal image gallery with Eleventy",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "add": "node scripts/add-post.js"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

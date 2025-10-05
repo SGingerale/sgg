@@ -1,0 +1,63 @@
+---
+layout: layout.njk
+---
+
+{% block content %}
+<header class="fancy-header">
+  <h1 class="site-title">See-SS</h1>
+
+  <!-- ハンバーガー＋メニューをまとめて囲む -->
+  <div class="nav-wrapper">
+    <!-- ハンバーガーボタン -->
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- ハンバーガーメニュー -->
+    <nav class="nav-bar">
+      <div class="nav-menu">
+        <a href="/">タイムライン</a>
+        <a href="/categories/illust/">イラスト</a>
+        <a href="/categories/story/">SS</a>
+        <a href="/contact/">連絡・LINK</a>
+      </div>
+    </nav>
+  </div>
+</header>
+{% set currentCategory = category or false %}
+
+{% for post in collections.all %}
+  {% if post.inputPath.startsWith("./posts/") %}
+    {% if not currentCategory or post.data.category == currentCategory %}
+      <div class="card">
+        {% if post.data.link %}
+          <h2>
+            <a href="{{ post.data.link }}" target="_blank" rel="noopener noreferrer">
+              {{ post.data.title }}
+            </a>
+          </h2>
+        {% else %}
+          <h2>{{ post.data.title }}</h2>
+        {% endif %}
+
+        {% if post.data.image %}
+          {% if post.data.link %}
+            <a href="{{ post.data.link }}" target="_blank" rel="noopener noreferrer">
+              <img src="{{ post.data.image | url }}" alt="{{ post.data.title }}">
+            </a>
+          {% else %}
+            <img src="{{ post.data.image | url }}" alt="{{ post.data.title }}">
+          {% endif %}
+        {% endif %}
+
+        <div>
+          {{ post.templateContent | safe }}
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% endblock %}

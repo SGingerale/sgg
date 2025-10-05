@@ -1,0 +1,209 @@
+/* ========== 共通スタイル ========== */
+body {
+  background-color: #f0f0f0;
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.5;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+}
+
+/* 汎用ラッパー */
+.white-wrapper,
+.card {
+  background-color: #ffffff;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  padding: 2rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.white-wrapper p,
+.card p {
+  margin-bottom: 1rem;
+}
+
+.white-wrapper h1,
+.card h1,
+.card h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #000;
+  padding-bottom: 0.5rem;
+}
+
+/* ========== ヘッダー ========== */
+.fancy-header {
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.site-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 600px;
+  padding: 1.5rem 1.5rem calc(1.5rem + 10px);
+  border: 2px solid #000;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 auto 0.5rem;
+}
+
+.site-title::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  content: '';
+  border-top: 2px solid #000;
+  background-image: repeating-linear-gradient(-45deg, #000, #000 1px, transparent 2px, transparent 5px);
+  background-size: 7px 7px;
+  backface-visibility: hidden;
+}
+
+.nav-bar {
+  width: 100%;
+  height: 40px;
+  display: block;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  line-height: 40px;
+}
+
+.nav-menu a {
+  position: relative;
+  padding: 0 4em;
+  cursor: pointer;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-menu a:not(:first-of-type)::before {
+  content: '';
+  position: absolute;
+  top: 25%;
+  left: 0;
+  width: 1px;
+  height: 50%;
+  background: #3a3a3a;
+}
+
+.nav-menu a:hover {
+  opacity: 0.7;
+}
+
+/* ========== ハンバーガー ========== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 0rem;
+  right: 1rem;
+  cursor: pointer;
+  padding: 10px;
+  gap: 4px;
+  background: none;
+  border: none;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+}
+
+/* ========== スマホ対応 ========== */
+@media screen and (max-width: 768px) {
+  .fancy-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0.8em;
+    height: auto;
+    position: relative; /* ★基準点にする */
+  }
+
+  .site-title {
+    font-size: 1.3rem;
+    padding: 1rem 1rem calc(1rem + 8px);
+    max-width: 90%;
+    height: auto;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* nav-wrapper を右上に寄せて配置 */
+  .nav-wrapper {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  /* .nav-bar の位置は nav-wrapper 基準になる */
+  .nav-bar {
+    position: absolute;
+    top: 3rem;
+    right: 10rem;
+    display: none;
+    z-index: 1000;
+  }
+
+  .nav-bar.open {
+    display: block;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 180px;
+    box-sizing: border-box;
+    margin: 0; /* ★余計な余白を消す */
+  }
+
+  .nav-menu a {
+    padding: 0.5rem 1rem;
+    width: 100%;
+    text-align: center;
+    background-color: transparent;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #ddd;
+    text-decoration: none;
+    color: #333;
+    box-sizing: border-box;
+  }
+
+  .nav-menu a:last-child {
+    border-bottom: none;
+  }
+
+  .nav-menu a:hover {
+    background-color: #f2f2f2;
+  }
+
+  .nav-menu a::before {
+    display: none;
+  }
+}
