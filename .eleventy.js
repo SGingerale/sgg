@@ -26,6 +26,7 @@ module.exports = function(eleventyConfig) {
   });
 
   return {
+    pathPrefix: "/sgg/",
     dir: {
       input: ".",
       includes: "_includes",
