@@ -18,14 +18,15 @@ layout: layout.njk
     <!-- ハンバーガーメニュー -->
     <nav class="nav-bar">
       <div class="nav-menu">
-        <a href="/">タイムライン</a>
-        <a href="/categories/illust/">イラスト</a>
-        <a href="/categories/story/">SS</a>
-        <a href="/contact/">連絡・LINK</a>
+        <a href="{{ '/' | url }}">タイムライン</a>
+        <a href="{{ '/categories/illust/' | url }}">イラスト</a>
+        <a href="{{ '/categories/story/' | url }}">SS</a>
+        <a href="{{ '/contact/' | url }}">連絡・LINK</a>
       </div>
     </nav>
   </div>
 </header>
+
 {% set currentCategory = category or false %}
 
 {% for post in collections.all %}
@@ -34,7 +35,7 @@ layout: layout.njk
       <div class="card">
         {% if post.data.link %}
           <h2>
-            <a href="{{ post.data.link }}" target="_blank" rel="noopener noreferrer">
+            <a href="{{ post.data.link | url }}">
               {{ post.data.title }}
             </a>
           </h2>
@@ -44,7 +45,7 @@ layout: layout.njk
 
         {% if post.data.image %}
           {% if post.data.link %}
-            <a href="{{ post.data.link }}" target="_blank" rel="noopener noreferrer">
+            <a href="{{ post.data.link | url }}">
               <img src="{{ post.data.image | url }}" alt="{{ post.data.title }}">
             </a>
           {% else %}
