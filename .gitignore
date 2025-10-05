@@ -1,4 +1,5 @@
 node_modules/
 .output/
 _site/
+docs/
 .DS_Store
